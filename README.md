@@ -1,4 +1,8 @@
-<h1 align="center">--𝒯𝐻𝐼𝒜𝒢𝒪 𝒪𝒮𝒜𝑀𝒰 𝒴𝒜𝑀𝒜𝒢𝒰𝒞𝐻𝐼 山口</h1>
 <p align="center">
-  <img width="250px" height="250px" alt="omori" src=https://c.tenor.com/m201Wz6VUBUAAAAi/omori-discord_plays_omori.gif>
+  <img alt="omori" src=https://cdn.discordapp.com/attachments/866782464009699348/1006550352558035085/text-1660050684643.png>
+<p align="center">
+<hr>
+<br>
+<p align="center">
+  <img alt="omori" src=https://user-images.githubusercontent.com/70382532/138322189-2db8df52-9dcb-40a0-88a8-c365466bd33d.gif>
 <p align="center">
