@@ -1,0 +1,56 @@
+name: Atualizar contribuições (3D + cobrinha)
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # todo dia às 03:00 (horário de Brasília)
+  workflow_dispatch: # permite rodar manualmente pela aba Actions
+  push:
+    branches: [main]
+    paths-ignore:
+      - "profile-3d-contrib/**"
+      - "profile-snake/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-contributions
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Gerar calendário 3D de contribuições
+        uses: yoshi389111/github-profile-3d-contrib@v0.9.3
+        env:
+          # Para incluir mais atividade de repositórios privados, crie um secret
+          # PROFILE_TOKEN com um Personal Access Token (opcional).
+          GITHUB_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+          SETTING_JSON: .github/3d-contrib.json
+
+      - name: Gerar animação da cobrinha
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            profile-snake/snake-dark.svg?palette=github-dark&color_snake=#22d3ee&color_dots=#1a1633,#3b1d6e,#6d28d9,#a855f7,#f0abfc
+            profile-snake/snake-light.svg?color_snake=#0891b2&color_dots=#ebe7f7,#e9d5ff,#c084fc,#9333ea,#6b21a8
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile-3d-contrib profile-snake
+          if git diff --staged --quiet; then
+            echo "Nenhuma mudança nas imagens."
+          else
+            git commit -m "chore: atualiza gráficos de contribuição"
+            git push
+          fi

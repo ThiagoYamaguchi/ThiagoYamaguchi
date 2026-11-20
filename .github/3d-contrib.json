@@ -1,0 +1,14 @@
+{
+  "type": "rainbow",
+  "fileName": "profile-3d-neon.svg",
+  "backgroundColor": "#0b0820",
+  "foregroundColor": "#ece9ff",
+  "strongColor": "#ff79c6",
+  "weakColor": "#8f89b8",
+  "radarColor": "#ff79c6",
+  "growingAnimation": true,
+  "saturation": "72%",
+  "contribLightness": ["16%", "34%", "44%", "54%", "64%"],
+  "duration": "12s",
+  "hueRatio": -7
+}
